@@ -16,6 +16,9 @@ public class StageManager : Singleton<StageManager>
     [Header("References")]
     public PlayerController PlayerController;
 
+    public int Score = 0;
+    public int ScorePerHit = 100;
+    public int Multiplier = 1;
     public override void Awake()
     {
         base.Awake();
@@ -42,6 +45,13 @@ public class StageManager : Singleton<StageManager>
         }
     }
 
+    public void AddScore()
+    {
+        Score += ScorePerHit * Multiplier;
+        UIManager.Instance.UpdateScore(Score);
+    }
+    
+    
 #region Road
 
     private void InitRoads()
@@ -82,6 +92,15 @@ public class StageManager : Singleton<StageManager>
     {
         var newRoad = Instantiate(RoadPrefabs[Random.Range(0,RoadPrefabs.Count)], RoadParent, true);
         newRoad.transform.position = new Vector3(0, i_SpawnPosition, 0);
+
+        foreach(Transform child in newRoad.transform)
+        {
+            if (child.CompareTag("Corn"))
+                child.transform.GetComponent<Renderer>().material.color =
+                    LevelManager.Instance.currentLevel.LevelSettings.CornColor;
+        }
+        
+        
         Roads.Enqueue(newRoad);
     }
     

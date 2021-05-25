@@ -32,10 +32,11 @@ public class UIManager : Singleton<UIManager>
             {
                 if(LevelTextInGame != null)
                     LevelTextInGame.text = "Level " + (SaveManager.GetSaveDataInt("LevelIndex") + 1);
-                //if(ScoreTextInGame != null)
-                //    ScoreTextInGame.text = "0 / " + LevelManager.Instance.currentLevel.requiredScore;
+                if(ScoreTextInGame != null)
+                    ScoreTextInGame.text = "0 / " + LevelManager.Instance.currentLevel.RequiredScore;
             });
     }
+    
     public void SetStart()
     {
         losePanel.SetActive(false);
@@ -54,6 +55,11 @@ public class UIManager : Singleton<UIManager>
         //HideRestartButton();
         //losePanel.SetActive(false);
         //gameplayPanel.SetActive(true);
+    }
+
+    public void UpdateScore(int score)
+    {
+        ScoreTextInGame.text = score + " / " + LevelManager.Instance.currentLevel.RequiredScore;
     }
     public void OpenCloseShop(bool isEnabled)
     {
@@ -75,7 +81,6 @@ public class UIManager : Singleton<UIManager>
     {
         gameplayPanel.SetActive(false);
         losePanel.SetActive(true);
-        Invoke(nameof(ShowRestartButton), 3f);
     }
     public void RestartGame()
     {
@@ -88,13 +93,6 @@ public class UIManager : Singleton<UIManager>
     public void NextLevel()
     {
         LevelManager.Instance.LoadNewLevel();
-    }
-    public void ShowRestartButton()
-    {
-        if (losePanel.gameObject.activeInHierarchy)
-        {
-            RestartButtonImage.SetActive(true);
-        }
     }
     public void HideRestartButton()
     {

@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9026fcb07649de14588431b0211db135, type: 3}
   m_Name: Level_1
   m_EditorClassIdentifier: 
+  RequiredScore: 5000
+  TotalRoadSpawnCount: 10
   LevelSettings:
     MovementSpeed: 4
     PlayerColor: {r: 1, g: 0.5294118, b: 0.42352942, a: 0}
-    CornColor: {r: 0, g: 0, b: 0, a: 0}
+    CornColor: {r: 0.80300784, g: 0.8584906, b: 0.1579299, a: 0}
     ObstacleColor: {r: 0, g: 0, b: 0, a: 0}

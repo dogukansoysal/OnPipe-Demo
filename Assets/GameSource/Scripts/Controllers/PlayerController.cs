@@ -60,15 +60,20 @@ public class PlayerController : MonoBehaviour
         // TODO: Explode
         GameManager.Instance.gameState = GameState.Lose;
     }
-    
-    
-    
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Road"))
+        {
             minScaleValue = other.transform.lossyScale.x / 2f;
-
+        }
+        if (other.transform.CompareTag("Corn"))
+        {
+            StageManager.Instance.AddScore();
+            Destroy(other.gameObject);
+        }
     }
+    
     
     
 }

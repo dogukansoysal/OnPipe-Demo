@@ -6,6 +6,8 @@ using NaughtyAttributes;
 [CreateAssetMenu(fileName = "Level", menuName = "Create Level")]
 public class Level : ScriptableObject
 {
+    public int RequiredScore;
+    public int TotalRoadSpawnCount;
     //[ShowAssetPreview]
     //public GameObject levelPrefab;
     public LevelSettings LevelSettings;
