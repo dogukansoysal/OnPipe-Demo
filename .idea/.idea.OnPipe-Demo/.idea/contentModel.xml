@@ -64,10 +64,13 @@
               <e p="Level.cs" t="Include" />
             </e>
             <e p="Utilities" t="Include">
+              <e p="CircleCornMaker.cs" t="Include" />
               <e p="CoinText.cs" t="Include" />
+              <e p="Corn.cs" t="Include" />
               <e p="GameConstants.cs" t="Include" />
               <e p="LevelSettings.cs" t="Include" />
               <e p="LevelText.cs" t="Include" />
+              <e p="RotateAround.cs" t="Include" />
               <e p="Singleton.cs" t="Include" />
             </e>
           </e>
