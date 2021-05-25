@@ -20,8 +20,9 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _GroundPos: -0.5
-    - _SkyPos: 0.5
+    - _GroundPos: 1
+    - _SkyPos: -0.35
     m_Colors:
-    - _Color: {r: 0, g: 0.4545455, b: 1, a: 1}
-    - _Color2: {r: 0.7775454, g: 0.8749258, b: 0.9528302, a: 1}
+    - _Color: {r: 0.15218939, g: 0.56216997, b: 0.5660378, a: 1}
+    - _Color2: {r: 0.5521538, g: 0.82499176, b: 0.8301887, a: 1}
+  m_BuildTextureStacks: []

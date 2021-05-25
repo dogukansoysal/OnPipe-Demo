@@ -23,6 +23,8 @@ public class UIManager : Singleton<UIManager>
     public TextMeshProUGUI LevelTextInGame;
     public TextMeshProUGUI ScoreTextInGame;
 
+    public GameObject StartButton;
+    
     private void Start()
     {
         LevelManager.Instance.levelLoad.AddListener(SetStart);
