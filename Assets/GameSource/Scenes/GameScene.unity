@@ -1129,6 +1129,8 @@ MonoBehaviour:
   isSceneReloading: 1
   levels:
   - {fileID: 11400000, guid: 87ecfa3fb7cc22c4f8d87115a2d587b2, type: 2}
+  - {fileID: 11400000, guid: ef6b376474e38d441a8473a4e24907ac, type: 2}
+  - {fileID: 11400000, guid: dc6e6981bd01c3345ac870ce059b5cf7, type: 2}
   currentLevelIndex: 0
   levelIndex: 0
   currentLevel: {fileID: 0}
@@ -1184,11 +1186,13 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   RoadPrefabs:
   - {fileID: 6015620932747203780, guid: 260570e3070a319419d2a641c39ed540, type: 3}
+  FinishPrefab: {fileID: 6015620932747203780, guid: 342398cdb1ac94841b2eb68aa2a3c68d, type: 3}
   RoadParent: {fileID: 188669967}
   PlayerController: {fileID: 2726240830932691870}
   Score: 0
   ScorePerHit: 100
   Multiplier: 1
+  SpawnedRoadCount: 0
 --- !u!1 &2071920057
 GameObject:
   m_ObjectHideFlags: 0

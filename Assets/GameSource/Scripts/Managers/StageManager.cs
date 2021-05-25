@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class StageManager : Singleton<StageManager>
 {
     public List<GameObject> RoadPrefabs;
-    
+    public GameObject FinishPrefab;
+
     public Queue<GameObject> Roads = new Queue<GameObject>();
     public Transform RoadParent;
 
@@ -19,6 +20,7 @@ public class StageManager : Singleton<StageManager>
     public int Score = 0;
     public int ScorePerHit = 100;
     public int Multiplier = 1;
+    public int SpawnedRoadCount = 0;
     public override void Awake()
     {
         base.Awake();
@@ -90,7 +92,17 @@ public class StageManager : Singleton<StageManager>
     
     private void SpawnNewRoad(float i_SpawnPosition)
     {
-        var newRoad = Instantiate(RoadPrefabs[Random.Range(0,RoadPrefabs.Count)], RoadParent, true);
+        GameObject newRoad = null;
+        if (SpawnedRoadCount < LevelManager.Instance.currentLevel.TotalRoadSpawnCount)
+        {
+            newRoad = Instantiate(RoadPrefabs[Random.Range(0, RoadPrefabs.Count)], RoadParent, true);
+        }
+        else
+        {
+            newRoad = Instantiate(FinishPrefab, RoadParent, true);
+
+        }
+
         newRoad.transform.position = new Vector3(0, i_SpawnPosition, 0);
 
         foreach(Transform child in newRoad.transform)
@@ -98,12 +110,19 @@ public class StageManager : Singleton<StageManager>
             if (child.CompareTag("Corn"))
                 child.transform.GetComponent<Renderer>().material.color =
                     LevelManager.Instance.currentLevel.LevelSettings.CornColor;
+            if (child.CompareTag("Obstacle"))
+                child.transform.GetComponent<Renderer>().material.color =
+                    LevelManager.Instance.currentLevel.LevelSettings.ObstacleColor;
         }
-        
+
+        if (GameManager.Instance.gameState == GameState.Play)
+        {
+            SpawnedRoadCount++;
+        }
         
         Roads.Enqueue(newRoad);
     }
-    
+
     /// <summary>
     /// Destroys last road block.
     /// </summary>

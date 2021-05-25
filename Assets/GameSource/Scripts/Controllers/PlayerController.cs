@@ -63,6 +63,9 @@ public class PlayerController : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        if(GameManager.Instance.gameState != GameState.Play)
+            return;
+        
         if (other.CompareTag("Road"))
         {
             minScaleValue = other.transform.lossyScale.x / 2f;
@@ -71,6 +74,21 @@ public class PlayerController : MonoBehaviour
         {
             StageManager.Instance.AddScore();
             Destroy(other.gameObject);
+        }
+        if (other.transform.CompareTag("Obstacle"))
+        {
+            GameManager.Instance.gameState = GameState.Lose;
+        }
+        if (other.transform.CompareTag("Finish"))
+        {
+            if (StageManager.Instance.Score >= LevelManager.Instance.currentLevel.RequiredScore)
+            {
+                GameManager.Instance.gameState = GameState.Win;
+            }
+            else
+            {
+                GameManager.Instance.gameState = GameState.Lose;
+            }
         }
     }
     
